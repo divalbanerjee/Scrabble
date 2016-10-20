@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.*;
 
 
 public class Tester {
@@ -17,5 +18,11 @@ public class Tester {
             e.printStackTrace();
         }
         tileBag.OutputToConsole();
+
+        JFrame gameWindow = new ScrabbleGUI();
+        gameWindow.setTitle("Scrabble");
+        gameWindow.setSize(1300,700);
+        gameWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        gameWindow.setVisible(true);
     }
 }
