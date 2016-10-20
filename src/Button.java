@@ -11,7 +11,7 @@ import java.awt.Font;
 
 public class Button extends JPanel{
 
-    //button properties
+    //button properties or variables
     Font myFont = new Font("Helvetica", Font.BOLD, 30);
     String myButtonText = "New Button";
 
