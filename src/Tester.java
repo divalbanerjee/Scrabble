@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Tester {
 
-    public static void main(String[]args){
+    public static void main(String[]args) {
 
         Bag tileBag = new Bag(null);
-        Scanner reader =  new Scanner(System.in);
+        Scanner reader = new Scanner(System.in);
 
         try {
             tileBag.generateTiles();
@@ -17,9 +17,5 @@ public class Tester {
             e.printStackTrace();
         }
         tileBag.OutputToConsole();
-        //System.out.print(tileBag.toString());
-        tileBag.shuffle();
-        System.out.println(tileBag.toString());
-        //tileBag.OutputToConsole();
     }
 }
