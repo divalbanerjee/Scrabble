@@ -16,8 +16,10 @@ public class Tester {
             System.out.println("bag generation failed");
             e.printStackTrace();
         }
-
         tileBag.OutputToConsole();
         //System.out.print(tileBag.toString());
+        tileBag.shuffle();
+        System.out.println(tileBag.toString());
+        //tileBag.OutputToConsole();
     }
 }

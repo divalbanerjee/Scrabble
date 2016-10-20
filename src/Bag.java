@@ -48,20 +48,27 @@ public class Bag {
     public void shuffle(){
         int rnum = 0;
         int swapNum = 0;
-        Tile tempTile = new Tile("a", 0);
+        Tile tempTile;
         int i  = 0;
-        System.out.print("Shuffled tiles:");
+        int a;
 
-        for(i = 0; i < 100; i++){
-            rnum = (int) Math.random() * ((100-1)+1);
+        System.out.print("Shuffled tiles:");
+        for(a = 0; a < 1000; a++) {
+            for (i = 0; i < 100; i++) {
+                //FIXME: isn't randomizing for some reason
+                rnum = (int) Math.random() * ((100 - 1) + 1);
+                tempTile = myBagOfTiles[i];
+                myBagOfTiles[i] = myBagOfTiles[rnum];
+                myBagOfTiles[rnum] = tempTile;
+            }
         }
     }
 
     public void OutputToConsole(){
         int i = 0;
-        for(i = 1; i < myBagOfTiles.length; i++){
-            System.out.println(myBagOfTiles[i].toString());
-        }
+        System.out.println(this.myBagOfTiles.length);
+        for(i = 1; i < this.myBagOfTiles.length; i++)
+            System.out.println(this.myBagOfTiles[i].toString());
     }
 
     @Override
