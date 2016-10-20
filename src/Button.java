@@ -18,6 +18,7 @@ public class Button extends JPanel{
 
     public Button(Color backColor){
         setBackground(backColor);
+
     }
 
     public void paintComponent(Graphics g){
@@ -27,8 +28,6 @@ public class Button extends JPanel{
     public void setFont(Font font){this.myFont = font;} //change font
 
     public void setText(String buttonText){this.myButtonText = buttonText;} //Change text
-
-
 
 
 }
