@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.io.*;
 import java.util.Scanner;
+import java.math.*;
 //this branch is for development
 public class Bag {
     Tile[] myBagOfTiles = new Tile[101];
@@ -52,7 +53,7 @@ public class Bag {
         System.out.print("Shuffled tiles:");
 
         for(i = 0; i < 100; i++){
-
+            rnum = (int) Math.random() * ((100-1)+1);
         }
     }
 
