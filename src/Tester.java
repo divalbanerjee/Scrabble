@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Tester {
 
     public static void main(String[]args) {
-
+        //Tile lab tester
         Bag tileBag = new Bag(null);
         Scanner reader = new Scanner(System.in);
 
@@ -19,6 +19,9 @@ public class Tester {
         }
         tileBag.OutputToConsole();
 
+
+
+        //Scrabble project GUI
         JFrame gameWindow = new ScrabbleGUI();
         gameWindow.setTitle("Scrabble");
         gameWindow.setSize(1300,700);
