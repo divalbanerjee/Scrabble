@@ -25,7 +25,6 @@ public class Button extends JPanel{
     int myPush = 0;
 
     public Button(Color backColor){
-        setBackground(backColor);
     }
 
     public void paintComponent(Graphics g){
