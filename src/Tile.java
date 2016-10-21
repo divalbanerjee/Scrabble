@@ -4,6 +4,7 @@ public class Tile {
     String myLetter;
     int myPoints;
     int myFrequency;
+    boolean Used;
 
     public Tile(String myLetter, int myPoints) {
         super();
@@ -26,6 +27,8 @@ public class Tile {
     public void setMyPoints(int myPoints) {
         this.myPoints = myPoints;
     }
+
+    public void setUsage(Boolean Usage){this.Used = Usage;}
 
     @Override
     public String toString() {

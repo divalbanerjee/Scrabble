@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.io.*;
+import java.util.Random;
 import java.util.Scanner;
 import java.math.*;
 //this branch is for development
@@ -51,12 +52,13 @@ public class Bag {
         Tile tempTile;
         int i  = 0;
         int a;
+        Random rand = new Random();
 
         System.out.print("Shuffled tiles:");
         for(a = 0; a < 1000; a++) {
             for (i = 0; i < 100; i++) {
                 //FIXME: isn't randomizing for some reason
-                rnum = (int) Math.random() * ((100 - 1) + 1);
+                rnum = rand.nextInt(50) + 1;
                 tempTile = myBagOfTiles[i];
                 myBagOfTiles[i] = myBagOfTiles[rnum];
                 myBagOfTiles[rnum] = tempTile;

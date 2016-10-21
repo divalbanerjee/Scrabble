@@ -2,6 +2,8 @@ import javafx.scene.shape.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -86,6 +88,8 @@ public class ScrabbleGUI extends JFrame {
         tileOptionPanel.add(btnOptionTile6);
         tileOptionPanel.add(btnOptionTile7);
 
+
+
         JPanel bottomPanel = new JPanel(new GridLayout(1,2,20,20));
         container.add(bottomPanel);
         btnCheckWord.setText("Check Word");
@@ -94,13 +98,14 @@ public class ScrabbleGUI extends JFrame {
         bottomPanel.add(lblScore);
         bottomPanel.add(btnCheckWord);
 
-
-
-
+       // btnOptionTile1.addMouseListener();
         pack();
         setVisible(true);
     }
 }
+
+
+
 
 /*
 This is a sample:
