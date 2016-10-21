@@ -1,10 +1,33 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * Created by div on 10/20/2016.
  */
 public class scabbleGame {
 
-    public void getWords(){
+    String[] myWords = new String[80000];
 
+    public void getWords() throws IOException{
+        Scanner check =  new Scanner(System.in);
+
+        Scanner reader = new Scanner(new File("words.txt"));
+
+        String strLine = "";
+        int wordPos = 0;
+        int i = 0;
+        int count = 0;
+        while(reader.hasNext()){
+
+            strLine = reader.next();
+                wordPos++;
+                //	System.out.println(bagPos);
+                myWords[wordPos] = new String(strLine);
+
+        }
+        reader.close();
+        System.out.println("succcess");
     }
 
 
