@@ -51,6 +51,8 @@ public class tileButton extends JPanel{
 
     public void setPaddingColor(Color paddingColor){this.myPaddingColor = paddingColor;} //change padding color of button
 
+    public void setTile(Tile tile){this.myTile = tile;}  //change tile
+
     public void push(Boolean Pushed){
         if(Pushed = true){
             this.myPush = this.myButtonPadding;

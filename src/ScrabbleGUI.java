@@ -2,6 +2,8 @@ import javafx.scene.shape.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Created by div on 10/20/2016.
@@ -9,6 +11,8 @@ import java.awt.*;
 public class ScrabbleGUI extends JFrame {
 
     Button btnCheckWord = new Button(Color.white);
+    Bag tileBag = new Bag(null);
+
 
     //Tiles
 
@@ -37,7 +41,27 @@ public class ScrabbleGUI extends JFrame {
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         JPanel tileDisplayPanel = new JPanel(new GridLayout(1,7,20,20));
 
+
         container.add(tileDisplayPanel);
+
+        try {
+            tileBag.generateTiles();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            System.out.println("bag generation failed");
+            e.printStackTrace();
+        }
+
+        tileBag.shuffle();
+        btnOptionTile1.setTile(tileBag.myBagOfTiles[1]);
+        btnOptionTile2.setTile(tileBag.myBagOfTiles[2]);
+        btnOptionTile3.setTile(tileBag.myBagOfTiles[3]);
+        btnOptionTile4.setTile(tileBag.myBagOfTiles[4]);
+        btnOptionTile5.setTile(tileBag.myBagOfTiles[5]);
+        btnOptionTile6.setTile(tileBag.myBagOfTiles[6]);
+        btnOptionTile7.setTile(tileBag.myBagOfTiles[7]);
+
+
 
 
         //TileDisplayPanel
@@ -63,8 +87,15 @@ public class ScrabbleGUI extends JFrame {
         tileOptionPanel.add(btnOptionTile7);
 
         JPanel bottomPanel = new JPanel(new GridLayout(1,2,20,20));
+        container.add(bottomPanel);
+        btnCheckWord.setText("Check Word");
+
         bottomPanel.add(lblCorrect);
         bottomPanel.add(lblScore);
+        bottomPanel.add(btnCheckWord);
+
+
+
 
         pack();
         setVisible(true);
