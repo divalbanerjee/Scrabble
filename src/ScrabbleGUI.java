@@ -7,13 +7,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Scanner;
 
-/**
- * Created by div on 10/20/2016.
- */
 public class ScrabbleGUI extends JFrame {
 
     Button btnCheckWord = new Button(Color.white);
     Bag tileBag = new Bag(null);
+    Font font = new Font("Helvetica", Font.PLAIN, 20);
 
 
     //Tiles
@@ -41,7 +39,7 @@ public class ScrabbleGUI extends JFrame {
     public ScrabbleGUI(){
         Container container = getContentPane();
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
-        JPanel tileDisplayPanel = new JPanel(new GridLayout(1,7,20,20));
+        JPanel tileDisplayPanel = new JPanel(new GridLayout(1,8,20,20));
 
 
         container.add(tileDisplayPanel);
@@ -55,6 +53,9 @@ public class ScrabbleGUI extends JFrame {
         }
 
         tileBag.shuffle();
+
+        lblScore.setFont(font);
+
         btnOptionTile1.setTile(tileBag.myBagOfTiles[1]);
         btnOptionTile2.setTile(tileBag.myBagOfTiles[2]);
         btnOptionTile3.setTile(tileBag.myBagOfTiles[3]);
@@ -63,10 +64,8 @@ public class ScrabbleGUI extends JFrame {
         btnOptionTile6.setTile(tileBag.myBagOfTiles[6]);
         btnOptionTile7.setTile(tileBag.myBagOfTiles[7]);
 
-
-
-
         //TileDisplayPanel
+
         tileDisplayPanel.add(btnTile1);
         tileDisplayPanel.add(btnTile2);
         tileDisplayPanel.add(btnTile3);
@@ -76,9 +75,10 @@ public class ScrabbleGUI extends JFrame {
         tileDisplayPanel.add(btnTile7);
 
         //Tile Option panel
-        JPanel tileOptionPanel =  new JPanel(new GridLayout(1,7,20,20));
+        JPanel tileOptionPanel =  new JPanel(new GridLayout(1,8,20,20));
        // container.add(tileOptionPanel);
         container.add(tileOptionPanel);
+
 
         tileOptionPanel.add(btnOptionTile1);
         tileOptionPanel.add(btnOptionTile2);
