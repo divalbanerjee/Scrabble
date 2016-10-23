@@ -9,8 +9,8 @@ public class Hand {
     public Tile getTile(int pos){
         return this.myHand[pos];
     }
+
     public void setTile(Tile tile, int pos){
-
+        this.myHand[pos] = tile;
     }
-
 }
