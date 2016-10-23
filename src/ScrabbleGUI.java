@@ -11,8 +11,7 @@ public class ScrabbleGUI extends JFrame {
 
     Button btnCheckWord = new Button(Color.white);
     Bag tileBag = new Bag(null);
-    Font font = new Font("Helvetica", Font.PLAIN, 20);
-
+    Font font = new Font("Helvetica", Font.PLAIN, 40);
 
     //Tiles
 
@@ -34,13 +33,29 @@ public class ScrabbleGUI extends JFrame {
 
     JLabel lblCorrect = new JLabel("");
     JLabel lblScore = new JLabel("Score:");
+    JLabel lblTitle = new JLabel("Scrabble");
 
 
     public ScrabbleGUI(){
         Container container = getContentPane();
         container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+        container.setBackground(new Color(255,97,61));
         JPanel tileDisplayPanel = new JPanel(new GridLayout(1,8,20,20));
+        JPanel title = new JPanel(new GridLayout(1,1,20,20));
+        title.setBackground(new Color(255,97,61));
+        container.add(title);
 
+
+        lblTitle.setForeground(Color.white);
+        lblCorrect.setForeground(Color.white);
+        lblScore.setForeground(Color.white);
+
+        lblTitle.setFont(font);
+        title.add(lblTitle);
+
+        float[] hsbvals;
+
+        tileDisplayPanel.setBackground(new Color(255,97,61));
 
         container.add(tileDisplayPanel);
 
@@ -55,6 +70,24 @@ public class ScrabbleGUI extends JFrame {
         tileBag.shuffle();
 
         lblScore.setFont(font);
+
+
+
+        btnTile1.setBackground(new Color(255,97,61));
+        btnTile2.setBackground(new Color(255,97,61));
+        btnTile3.setBackground(new Color(255,97,61));
+        btnTile4.setBackground(new Color(255,97,61));
+        btnTile5.setBackground(new Color(255,97,61));
+        btnTile6.setBackground(new Color(255,97,61));
+        btnTile7.setBackground(new Color(255,97,61));
+
+        btnOptionTile1.setBackground(new Color(255,97,61));
+        btnOptionTile2.setBackground(new Color(255,97,61));
+        btnOptionTile3.setBackground(new Color(255,97,61));
+        btnOptionTile4.setBackground(new Color(255,97,61));
+        btnOptionTile5.setBackground(new Color(255,97,61));
+        btnOptionTile6.setBackground(new Color(255,97,61));
+        btnOptionTile7.setBackground(new Color(255,97,61));
 
         btnOptionTile1.setTile(tileBag.myBagOfTiles[1]);
         btnOptionTile2.setTile(tileBag.myBagOfTiles[2]);
@@ -76,6 +109,8 @@ public class ScrabbleGUI extends JFrame {
 
         //Tile Option panel
         JPanel tileOptionPanel =  new JPanel(new GridLayout(1,8,20,20));
+
+        tileOptionPanel.setBackground(new Color(255,97,61));
        // container.add(tileOptionPanel);
         container.add(tileOptionPanel);
 
@@ -89,14 +124,21 @@ public class ScrabbleGUI extends JFrame {
         tileOptionPanel.add(btnOptionTile7);
 
 
+        //JPanel otherPanel = new JPanel(new GridLayout(1,1,20,20));
+       // container.add(otherPanel);
+
 
         JPanel bottomPanel = new JPanel(new GridLayout(1,2,20,20));
+        bottomPanel.setBackground(new Color(255,97,61));
         container.add(bottomPanel);
         btnCheckWord.setText("Check Word");
 
-        bottomPanel.add(lblCorrect);
-        bottomPanel.add(lblScore);
+        btnCheckWord.setBackground(new Color(255,97,61));
+
         bottomPanel.add(btnCheckWord);
+        bottomPanel.add(lblScore);
+        bottomPanel.add(lblCorrect);
+
 
        // btnOptionTile1.addMouseListener();
         pack();

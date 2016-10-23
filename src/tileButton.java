@@ -18,7 +18,8 @@ public class tileButton extends JPanel{
     Font myFont = new Font("Helvetica", Font.PLAIN, 40);
     int myButtonPadding =  3;
     int myTileSize = 100;
-    Color myPaddingColor= Color.GRAY;
+    Color myPaddingColor= new Color(144,12,63);
+    Color myMainColor = new Color(209,10,67);
     int myPush = 0;
 
 
@@ -31,18 +32,18 @@ public class tileButton extends JPanel{
 
         g.setFont(myFont);
 
-        g.setColor(Color.GRAY);
+        g.setColor(myPaddingColor);
         g.fillRoundRect(20+ this.myButtonPadding,20 +this.myButtonPadding,this.myTileSize,this.myTileSize,25,25); //xpos, y pos, width, height
 
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(myMainColor);
         g.fillRoundRect(20 + this.myPush,20 + this.myPush,this.myTileSize,this.myTileSize,25,25); //xpos, y pos, width, height
 
-        g.setColor(Color.white);
+        g.setColor(new Color(255,195,0));
         //g.drawString(myButtonText,(int)(getWidth()/2-myButtonText.length()*myFont.getSize()/2), (int)(getHeight()/2*myFont.getSize()/2));
-        g.drawString(this.myTile.getMyLetter(), 8 + this.myTileSize/2 , 30 + this.myTileSize/2);
+        g.drawString(this.myTile.getMyLetter(), 8 + this.myTileSize/2 , 35 + this.myTileSize/2);
 
         g.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        g.drawString(this.myTile.getMyPoints()+"",this.myTileSize,40);
+        g.drawString(this.myTile.getMyPoints()+"",this.myTileSize-5,45);
     }
 
     public void setFont(Font font){this.myFont = font;} //change font

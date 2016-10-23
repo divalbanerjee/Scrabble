@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class scabbleGame {
 
     String[] myWords = new String[80000];
+    int totalWords  = 0;
+
 
     public void getWords() throws IOException{
         Scanner check =  new Scanner(System.in);
@@ -28,6 +30,7 @@ public class scabbleGame {
         }
         reader.close();
         System.out.println("succcess");
+        totalWords = wordPos;
     }
 
 
