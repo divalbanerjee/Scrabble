@@ -108,15 +108,18 @@ public class scabbleGame {
 
 
 
-    int scoreWord(){
+    int scoreWord() throws IOException{
         int score = 0;
         int i = 0;
-        if(this.checkWord(this.enteredHand.getWord())){
-            for(i = 0; i <=enteredHand.getWord().length(); i++){
-
+      //  if(this.checkWord(this.enteredHand.getWord())) {
+            for (i = 1; i < enteredHand.getWord().length()-3; i++) {
+                System.out.println(i);
+                score = score + enteredHand.getTile(i).getMyPoints();
+                System.out.println("score"+score);
             }
-        }
-
+       // }
+        System.out.println(enteredHand.getTile(1).toString());
+        System.out.print(score);
         return score;
     }
 
@@ -134,11 +137,13 @@ public class scabbleGame {
         for (int i = 0; i < totalWords; ){
             if(enteredWord.equals(this.myWords[i])){
                 exists = true;
+                break;
             }
             else{
                 exists = false;
             }
         }
+        System.out.println(exists);
         return exists;
     }
 

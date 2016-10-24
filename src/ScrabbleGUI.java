@@ -8,11 +8,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.*;
+
 
 public class ScrabbleGUI extends JFrame {
 
     Button btnCheckWord = new Button(Color.white);
     Font font = new Font("Helvetica", Font.PLAIN, 40);
+    //UIManager.put("OptionPane.messageFont", font);
+   // UIManager.put("OptionPane.messageFont",font);
 
     //Tiles
 
@@ -145,12 +149,22 @@ public class ScrabbleGUI extends JFrame {
 
         btnOptionTile1.addMouseListener(new MouseLIstenerTile1());
         btnOptionTile2.addMouseListener(new MouseLIstenerTile2());
-       // btnOptionTile2.addMouseListener(new MouseLIstenerTile3());
-        //btnOptionTile2.addMouseListener(new MouseLIstenerTile4());
-      //  btnOptionTile2.addMouseListener(new MouseLIstenerTile5());
-     //   btnOptionTile2.addMouseListener(new MouseLIstenerTile6());
-      //  btnOptionTile2.addMouseListener(new MouseLIstenerTile7());
+        btnOptionTile3.addMouseListener(new MouseLIstenerTile3());
+        btnOptionTile4.addMouseListener(new MouseLIstenerTile4());
+        btnOptionTile5.addMouseListener(new MouseLIstenerTile5());
+        btnOptionTile6.addMouseListener(new MouseLIstenerTile6());
+        btnOptionTile7.addMouseListener(new MouseLIstenerTile7());
        // btnOptionTile1.addMouseListener();
+
+        btnCheckWord.addMouseListener(new MouseListenerCheckButton());
+        try {
+            game.getWords();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            System.out.println("dictionary failed");
+            e.printStackTrace();
+        }
+
         pack();
         setVisible(true);
     }
@@ -159,6 +173,12 @@ public class ScrabbleGUI extends JFrame {
     public class MouseLIstenerTile1 extends MouseAdapter{
         public void mousePressed(MouseEvent e){
             if(btnOptionTile1enabled==true) {
+                if(game.optionHand.getTile(1).getMyLetter().equals("-")){
+                    Tile temp = new Tile("a",0);
+                    temp.setMyLetter(JOptionPane.showInputDialog("Enter a letter for your tile"));
+                    temp.setMyPoints(game.getTilePoints(temp));
+                    game.optionHand.setTile(temp,1);
+                }
                 game.enteredHand.addTile(game.optionHand.getTile(1));
                 btnOptionTile1enabled = false;
                 btnOptionTile1.setVisibility(false);
@@ -191,6 +211,12 @@ public class ScrabbleGUI extends JFrame {
     public class MouseLIstenerTile2 extends MouseAdapter{
         public void mousePressed(MouseEvent e){
             if(btnOptionTile2enabled==true) {
+                if(game.optionHand.getTile(2).getMyLetter().equals("-")){
+                    Tile temp = new Tile("a",0);
+                    temp.setMyLetter(JOptionPane.showInputDialog("Enter a letter for your tile"));
+                    temp.setMyPoints(game.getTilePoints(temp));
+                    game.optionHand.setTile(temp,2);
+                }
                 game.enteredHand.addTile(game.optionHand.getTile(2));
                 btnOptionTile2enabled = false;
                 btnOptionTile2.setVisibility(false);
@@ -219,6 +245,210 @@ public class ScrabbleGUI extends JFrame {
             }
         }
     }
+
+    public class MouseLIstenerTile3 extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            if(btnOptionTile3enabled==true) {
+                if(game.optionHand.getTile(3).getMyLetter().equals("-")){
+                    Tile temp = new Tile("a",0);
+                    temp.setMyLetter(JOptionPane.showInputDialog("Enter a letter for your tile"));
+                    temp.setMyPoints(game.getTilePoints(temp));
+                    game.optionHand.setTile(temp,3);
+                }
+                game.enteredHand.addTile(game.optionHand.getTile(3));
+                btnOptionTile3enabled = false;
+                btnOptionTile3.setVisibility(false);
+                if(game.enteredHand.length==1) {
+                    btnTile1.setTile(game.enteredHand.getTile(1));
+                }
+
+                else if(game.enteredHand.length==2){
+                    btnTile2.setTile(game.enteredHand.getTile(2));
+                }
+                else if(game.enteredHand.length==3){
+                    btnTile3.setTile(game.enteredHand.getTile(3));
+                }
+                else if(game.enteredHand.length==4){
+                    btnTile4.setTile(game.enteredHand.getTile(4));
+                }
+                else if(game.enteredHand.length==5){
+                    btnTile5.setTile(game.enteredHand.getTile(5));
+                }
+                else if(game.enteredHand.length==6){
+                    btnTile6.setTile(game.enteredHand.getTile(6));
+                }
+                else if(game.enteredHand.length==7){
+                    btnTile7.setTile(game.enteredHand.getTile(7));
+                }
+            }
+        }
+    }
+
+    public class MouseLIstenerTile4 extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            if(btnOptionTile4enabled==true) {
+                if(game.optionHand.getTile(4).getMyLetter().equals("-")){
+                    Tile temp = new Tile("a",0);
+                    temp.setMyLetter(JOptionPane.showInputDialog("Enter a letter for your tile"));
+                    temp.setMyPoints(game.getTilePoints(temp));
+                    game.optionHand.setTile(temp,4);
+                }
+                game.enteredHand.addTile(game.optionHand.getTile(4));
+                btnOptionTile4enabled = false;
+                btnOptionTile4.setVisibility(false);
+                if(game.enteredHand.length==1) {
+                    btnTile1.setTile(game.enteredHand.getTile(1));
+                }
+
+                else if(game.enteredHand.length==2){
+                    btnTile2.setTile(game.enteredHand.getTile(2));
+                }
+                else if(game.enteredHand.length==3){
+                    btnTile3.setTile(game.enteredHand.getTile(3));
+                }
+                else if(game.enteredHand.length==4){
+                    btnTile4.setTile(game.enteredHand.getTile(4));
+                }
+                else if(game.enteredHand.length==5){
+                    btnTile5.setTile(game.enteredHand.getTile(5));
+                }
+                else if(game.enteredHand.length==6){
+                    btnTile6.setTile(game.enteredHand.getTile(6));
+                }
+                else if(game.enteredHand.length==7){
+                    btnTile7.setTile(game.enteredHand.getTile(7));
+                }
+            }
+        }
+    }
+
+    public class MouseLIstenerTile5 extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            if(btnOptionTile5enabled==true) {
+                if(game.optionHand.getTile(5).getMyLetter().equals("-")){
+                    Tile temp = new Tile("a",0);
+                    temp.setMyLetter(JOptionPane.showInputDialog("Enter a letter for your tile"));
+                    temp.setMyPoints(game.getTilePoints(temp));
+                    game.optionHand.setTile(temp,5);
+                }
+                game.enteredHand.addTile(game.optionHand.getTile(5));
+                btnOptionTile5enabled = false;
+                btnOptionTile5.setVisibility(false);
+                if(game.enteredHand.length==1) {
+                    btnTile1.setTile(game.enteredHand.getTile(1));
+                }
+
+                else if(game.enteredHand.length==2){
+                    btnTile2.setTile(game.enteredHand.getTile(2));
+                }
+                else if(game.enteredHand.length==3){
+                    btnTile3.setTile(game.enteredHand.getTile(3));
+                }
+                else if(game.enteredHand.length==4){
+                    btnTile4.setTile(game.enteredHand.getTile(4));
+                }
+                else if(game.enteredHand.length==5){
+                    btnTile5.setTile(game.enteredHand.getTile(5));
+                }
+                else if(game.enteredHand.length==6){
+                    btnTile6.setTile(game.enteredHand.getTile(6));
+                }
+                else if(game.enteredHand.length==7){
+                    btnTile7.setTile(game.enteredHand.getTile(7));
+                }
+            }
+        }
+    }
+
+    public class MouseLIstenerTile6 extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            if(btnOptionTile6enabled==true) {
+                if(game.optionHand.getTile(6).getMyLetter().equals("-")){
+                    Tile temp = new Tile("a",0);
+                    temp.setMyLetter(JOptionPane.showInputDialog("Enter a letter for your tile"));
+                    temp.setMyPoints(game.getTilePoints(temp));
+                    game.optionHand.setTile(temp,6);
+                }
+                game.enteredHand.addTile(game.optionHand.getTile(6));
+                btnOptionTile6enabled = false;
+                btnOptionTile6.setVisibility(false);
+                if(game.enteredHand.length==1) {
+                    btnTile1.setTile(game.enteredHand.getTile(1));
+                }
+
+                else if(game.enteredHand.length==2){
+                    btnTile2.setTile(game.enteredHand.getTile(2));
+                }
+                else if(game.enteredHand.length==3){
+                    btnTile3.setTile(game.enteredHand.getTile(3));
+                }
+                else if(game.enteredHand.length==4){
+                    btnTile4.setTile(game.enteredHand.getTile(4));
+                }
+                else if(game.enteredHand.length==5){
+                    btnTile5.setTile(game.enteredHand.getTile(5));
+                }
+                else if(game.enteredHand.length==6){
+                    btnTile6.setTile(game.enteredHand.getTile(6));
+                }
+                else if(game.enteredHand.length==7){
+                    btnTile7.setTile(game.enteredHand.getTile(7));
+                }
+            }
+        }
+    }
+
+    public class MouseLIstenerTile7 extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            if(btnOptionTile7enabled==true) {
+                if(game.optionHand.getTile(7).getMyLetter().equals("-")){
+                    Tile temp = new Tile("a",0);
+                    temp.setMyLetter(JOptionPane.showInputDialog("Enter a letter for your tile"));
+                    temp.setMyPoints(game.getTilePoints(temp));
+                    game.optionHand.setTile(temp,7);
+                }
+                game.enteredHand.addTile(game.optionHand.getTile(7));
+                btnOptionTile7enabled = false;
+                btnOptionTile7.setVisibility(false);
+                if(game.enteredHand.length==1) {
+                    btnTile1.setTile(game.enteredHand.getTile(1));
+                }
+
+                else if(game.enteredHand.length==2){
+                    btnTile2.setTile(game.enteredHand.getTile(2));
+                }
+                else if(game.enteredHand.length==3){
+                    btnTile3.setTile(game.enteredHand.getTile(3));
+                }
+                else if(game.enteredHand.length==4){
+                    btnTile4.setTile(game.enteredHand.getTile(4));
+                }
+                else if(game.enteredHand.length==5){
+                    btnTile5.setTile(game.enteredHand.getTile(5));
+                }
+                else if(game.enteredHand.length==6){
+                    btnTile6.setTile(game.enteredHand.getTile(6));
+                }
+                else if(game.enteredHand.length==7){
+                    btnTile7.setTile(game.enteredHand.getTile(7));
+                }
+            }
+        }
+    }
+
+    public class MouseListenerCheckButton extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            int score  = 0;
+            System.out.println("Click detected");
+                try {
+                    score = game.scoreWord();
+                    lblScore.setText("Score:"+ score);
+                } catch (IOException o) {
+                    lblScore.setText("Score:"+ score);
+                }
+        }
+    }
+
 }
 
 
