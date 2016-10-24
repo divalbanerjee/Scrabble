@@ -4,13 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class ScrabbleGUI extends JFrame {
 
     Button btnCheckWord = new Button(Color.white);
-    Bag tileBag = new Bag(null);
     Font font = new Font("Helvetica", Font.PLAIN, 40);
 
     //Tiles
@@ -31,9 +32,20 @@ public class ScrabbleGUI extends JFrame {
     tileButton btnOptionTile6 = new tileButton(new Tile("A",0));
     tileButton btnOptionTile7 = new tileButton(new Tile("A",0));
 
+    boolean btnOptionTile1enabled = true;
+    boolean btnOptionTile2enabled = true;
+    boolean btnOptionTile3enabled = true;
+    boolean btnOptionTile4enabled = true;
+    boolean btnOptionTile5enabled = true;
+    boolean btnOptionTile6enabled = true;
+    boolean btnOptionTile7enabled = true;
+
+
     JLabel lblCorrect = new JLabel("");
     JLabel lblScore = new JLabel("Score:");
     JLabel lblTitle = new JLabel("Scrabble");
+
+    scabbleGame game = new scabbleGame();
 
 
     public ScrabbleGUI(){
@@ -53,25 +65,14 @@ public class ScrabbleGUI extends JFrame {
         lblTitle.setFont(font);
         title.add(lblTitle);
 
-        float[] hsbvals;
+
 
         tileDisplayPanel.setBackground(new Color(255,97,61));
 
         container.add(tileDisplayPanel);
 
-        try {
-            tileBag.generateTiles();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            System.out.println("bag generation failed");
-            e.printStackTrace();
-        }
-
-        tileBag.shuffle();
 
         lblScore.setFont(font);
-
-
 
         btnTile1.setBackground(new Color(255,97,61));
         btnTile2.setBackground(new Color(255,97,61));
@@ -89,13 +90,15 @@ public class ScrabbleGUI extends JFrame {
         btnOptionTile6.setBackground(new Color(255,97,61));
         btnOptionTile7.setBackground(new Color(255,97,61));
 
-        btnOptionTile1.setTile(tileBag.myBagOfTiles[1]);
-        btnOptionTile2.setTile(tileBag.myBagOfTiles[2]);
-        btnOptionTile3.setTile(tileBag.myBagOfTiles[3]);
-        btnOptionTile4.setTile(tileBag.myBagOfTiles[4]);
-        btnOptionTile5.setTile(tileBag.myBagOfTiles[5]);
-        btnOptionTile6.setTile(tileBag.myBagOfTiles[6]);
-        btnOptionTile7.setTile(tileBag.myBagOfTiles[7]);
+        btnOptionTile1.setTile(game.optionHand.getTile(1));
+        btnOptionTile2.setTile(game.optionHand.getTile(2));
+        btnOptionTile3.setTile(game.optionHand.getTile(3));
+        btnOptionTile4.setTile(game.optionHand.getTile(4));
+        btnOptionTile5.setTile(game.optionHand.getTile(5));
+        btnOptionTile6.setTile(game.optionHand.getTile(6));
+        btnOptionTile7.setTile(game.optionHand.getTile(7));
+
+
 
         //TileDisplayPanel
 
@@ -140,9 +143,81 @@ public class ScrabbleGUI extends JFrame {
         bottomPanel.add(lblCorrect);
 
 
+        btnOptionTile1.addMouseListener(new MouseLIstenerTile1());
+        btnOptionTile2.addMouseListener(new MouseLIstenerTile2());
+       // btnOptionTile2.addMouseListener(new MouseLIstenerTile3());
+        //btnOptionTile2.addMouseListener(new MouseLIstenerTile4());
+      //  btnOptionTile2.addMouseListener(new MouseLIstenerTile5());
+     //   btnOptionTile2.addMouseListener(new MouseLIstenerTile6());
+      //  btnOptionTile2.addMouseListener(new MouseLIstenerTile7());
        // btnOptionTile1.addMouseListener();
         pack();
         setVisible(true);
+    }
+
+    //event listeners
+    public class MouseLIstenerTile1 extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            if(btnOptionTile1enabled==true) {
+                game.enteredHand.addTile(game.optionHand.getTile(1));
+                btnOptionTile1enabled = false;
+                btnOptionTile1.setVisibility(false);
+                if(game.enteredHand.length==1) {
+                    btnTile1.setTile(game.enteredHand.getTile(1));
+                }
+
+                else if(game.enteredHand.length==2){
+                    btnTile2.setTile(game.enteredHand.getTile(2));
+                }
+                else if(game.enteredHand.length==3){
+                    btnTile3.setTile(game.enteredHand.getTile(3));
+                }
+                else if(game.enteredHand.length==4){
+                    btnTile4.setTile(game.enteredHand.getTile(4));
+                }
+                else if(game.enteredHand.length==5){
+                    btnTile5.setTile(game.enteredHand.getTile(5));
+                }
+                else if(game.enteredHand.length==6){
+                    btnTile6.setTile(game.enteredHand.getTile(6));
+                }
+                else if(game.enteredHand.length==7){
+                    btnTile7.setTile(game.enteredHand.getTile(7));
+                }
+            }
+        }
+    }
+
+    public class MouseLIstenerTile2 extends MouseAdapter{
+        public void mousePressed(MouseEvent e){
+            if(btnOptionTile2enabled==true) {
+                game.enteredHand.addTile(game.optionHand.getTile(2));
+                btnOptionTile2enabled = false;
+                btnOptionTile2.setVisibility(false);
+                if(game.enteredHand.length==1) {
+                    btnTile1.setTile(game.enteredHand.getTile(1));
+                }
+
+                else if(game.enteredHand.length==2){
+                    btnTile2.setTile(game.enteredHand.getTile(2));
+                }
+                else if(game.enteredHand.length==3){
+                    btnTile3.setTile(game.enteredHand.getTile(3));
+                }
+                else if(game.enteredHand.length==4){
+                    btnTile4.setTile(game.enteredHand.getTile(4));
+                }
+                else if(game.enteredHand.length==5){
+                    btnTile5.setTile(game.enteredHand.getTile(5));
+                }
+                else if(game.enteredHand.length==6){
+                    btnTile6.setTile(game.enteredHand.getTile(6));
+                }
+                else if(game.enteredHand.length==7){
+                    btnTile7.setTile(game.enteredHand.getTile(7));
+                }
+            }
+        }
     }
 }
 

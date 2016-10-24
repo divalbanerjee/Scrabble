@@ -62,6 +62,14 @@ public class tileButton extends JPanel{
         repaint();
     }  //change tile
 
+    public Tile checkForBlank(){
+        if(this.myTile.myLetter.equals("-")){
+            JOptionPane.showInputDialog("Enter Letter");
+
+        }
+        return this.myTile;
+    }
+
     public void push(Boolean Pushed){
         if(Pushed = true){
             this.myPush = this.myButtonPadding;
@@ -70,5 +78,8 @@ public class tileButton extends JPanel{
             this.myPush = 0;
         }
     }
-    public void setVisibility(Boolean visible){this.visibility= visible;}
+    public void setVisibility(Boolean visible){
+        this.visibility= visible;
+        repaint();
+    }
 }

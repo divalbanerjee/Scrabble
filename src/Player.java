@@ -2,11 +2,13 @@
 public class Player {
     String myName;
     int myScore;
+    Hand playerHand = new Hand();
 
     public Player(String myName, int myScore) {
         super();
         this.myName = myName;
         this.myScore = myScore;
+
     }
 
     public String getMyName() {

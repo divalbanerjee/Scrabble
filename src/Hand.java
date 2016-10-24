@@ -1,10 +1,10 @@
 
 public class Hand {
-    Tile[] myHand = new Tile[7];
+    Tile[] myHand = new Tile[8];
     int length = 0;
 
-    public Hand(Tile[] myHand) {
-        this.myHand = myHand;
+    public Hand() {
+        this.myHand = new Tile[8];
     }
 
     public Tile getTile(int pos){
@@ -27,9 +27,10 @@ public class Hand {
         return enteredWord;
     }
     public void addTile(Tile tile){
-        length++;
-        if(length <= 7){
-            this.myHand[length] = tile;
+        this.length++;
+        System.out.println(this.length);
+        if(this.length <= 7){
+            this.myHand[this.length] = tile;
         }
     }
 }
