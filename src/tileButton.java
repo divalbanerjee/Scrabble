@@ -21,29 +21,31 @@ public class tileButton extends JPanel{
     Color myPaddingColor= new Color(144,12,63);
     Color myMainColor = new Color(209,10,67);
     int myPush = 0;
+    boolean visibility = true;
 
 
     public tileButton(Tile defaultTile){
         this.myTile = defaultTile;
     }
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if (visibility == true) {
+            g.setFont(myFont);
 
-        g.setFont(myFont);
+            g.setColor(myPaddingColor);
+            g.fillRoundRect(20 + this.myButtonPadding, 20 + this.myButtonPadding, this.myTileSize, this.myTileSize, 25, 25); //xpos, y pos, width, height
 
-        g.setColor(myPaddingColor);
-        g.fillRoundRect(20+ this.myButtonPadding,20 +this.myButtonPadding,this.myTileSize,this.myTileSize,25,25); //xpos, y pos, width, height
+            g.setColor(myMainColor);
+            g.fillRoundRect(20 + this.myPush, 20 + this.myPush, this.myTileSize, this.myTileSize, 25, 25); //xpos, y pos, width, height
 
-        g.setColor(myMainColor);
-        g.fillRoundRect(20 + this.myPush,20 + this.myPush,this.myTileSize,this.myTileSize,25,25); //xpos, y pos, width, height
+            g.setColor(new Color(255, 195, 0));
+            //g.drawString(myButtonText,(int)(getWidth()/2-myButtonText.length()*myFont.getSize()/2), (int)(getHeight()/2*myFont.getSize()/2));
+            g.drawString(this.myTile.getMyLetter(), 8 + this.myTileSize / 2, 35 + this.myTileSize / 2);
 
-        g.setColor(new Color(255,195,0));
-        //g.drawString(myButtonText,(int)(getWidth()/2-myButtonText.length()*myFont.getSize()/2), (int)(getHeight()/2*myFont.getSize()/2));
-        g.drawString(this.myTile.getMyLetter(), 8 + this.myTileSize/2 , 35 + this.myTileSize/2);
-
-        g.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        g.drawString(this.myTile.getMyPoints()+"",this.myTileSize-5,45);
+            g.setFont(new Font("Helvetica", Font.PLAIN, 20));
+            g.drawString(this.myTile.getMyPoints() + "", this.myTileSize - 5, 45);
+        }
     }
 
     public void setFont(Font font){this.myFont = font;} //change font
@@ -68,4 +70,5 @@ public class tileButton extends JPanel{
             this.myPush = 0;
         }
     }
+    public void setVisibility(Boolean visible){this.visibility= visible;}
 }

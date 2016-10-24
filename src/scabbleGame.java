@@ -9,6 +9,9 @@ public class scabbleGame {
 
     String[] myWords = new String[80000];
     int totalWords  = 0;
+    Tile[] tileValues = new Tile[26];
+    Hand playerHand = new Hand(null);
+    Hand enteredHand =  new Hand(null);
 
 
     public void getWords() throws IOException{
@@ -53,10 +56,12 @@ public class scabbleGame {
         return check;
     }
 
-    public boolean checkWord(String word){
+    public boolean checkWord(String word) {
         Boolean exists = false;
+        String enteredWord = enteredHand.getWord();
 
-
+        for (int i = 0; i < totalWords; ){
+        }
         return exists;
     }
 

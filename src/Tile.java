@@ -5,6 +5,7 @@ public class Tile {
     int myPoints;
     int myFrequency;
     boolean Used;
+    boolean visibility = true;
 
     public Tile(String myLetter, int myPoints) {
         super();
@@ -29,6 +30,8 @@ public class Tile {
     }
 
     public void setUsage(Boolean Usage){this.Used = Usage;}
+
+    public void setVisibility(Boolean visible){this.visibility= visible;}
 
     @Override
     public String toString() {
