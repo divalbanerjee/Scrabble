@@ -8,7 +8,11 @@ public class Hand {
     }
 
     public Tile getTile(int pos){
-        return this.myHand[pos];
+        Tile returned = new Tile(".",0);
+        if(pos<= this.length) {
+            returned = this.myHand[pos];
+        }
+        return returned;
     }
     public int getLength(){
         return this.length;
@@ -18,11 +22,11 @@ public class Hand {
         this.myHand[pos] = tile;
     }
     public String getWord(){
-        String enteredWord = "";
+        String enteredWord = new String();
         int c = 0;
-        int i = 0;
-        for(c = 0; c <= this.getLength(); c++){
-            enteredWord = enteredWord+ this.myHand[c];
+        //int i = 0;
+        for(c = 1; c <= this.getLength(); c++){
+            enteredWord = enteredWord+ this.myHand[c].myLetter;
         }
         return enteredWord;
     }
@@ -33,4 +37,6 @@ public class Hand {
             this.myHand[this.length] = tile;
         }
     }
+
+
 }

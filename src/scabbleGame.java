@@ -59,6 +59,7 @@ public class scabbleGame {
         System.out.println("succcess");
 
         totalWords = wordPos;
+        System.out.println(totalWords);
     }
 
     public void openTilePoints() throws IOException{
@@ -81,7 +82,8 @@ public class scabbleGame {
             tileValues[count] = new Tile(Letter, Points);
         }
         reader.close();
-        System.out.println("succcess");
+
+        //System.out.println();
     }
 
     public int getTilePoints(Tile tile){
@@ -102,6 +104,10 @@ public class scabbleGame {
 
     }
 
+
+
+
+
     public void enterOptionTile(Tile tile){
         enteredHand.addTile(tile);
     }
@@ -111,13 +117,13 @@ public class scabbleGame {
     int scoreWord() throws IOException{
         int score = 0;
         int i = 0;
-      //  if(this.checkWord(this.enteredHand.getWord())) {
-            for (i = 1; i < enteredHand.getWord().length()-3; i++) {
+        if(this.checkWord(this.enteredHand.getWord())) { //FIXME: test wont pass
+            for (i = 1; i <= enteredHand.getWord().length(); i++) {
                 System.out.println(i);
                 score = score + enteredHand.getTile(i).getMyPoints();
                 System.out.println("score"+score);
             }
-       // }
+        }
         System.out.println(enteredHand.getTile(1).toString());
         System.out.print(score);
         return score;
@@ -133,14 +139,12 @@ public class scabbleGame {
     public boolean checkWord(String word) {
         Boolean exists = false;
         String enteredWord = enteredHand.getWord();
-
-        for (int i = 0; i < totalWords; ){
-            if(enteredWord.equals(this.myWords[i])){
+        System.out.println(enteredWord);
+        System.out.println(enteredWord.length());
+        for (int i = 0; i < totalWords; i++ ){
+            if(enteredWord.equals(this.myWords[i])) {
                 exists = true;
                 break;
-            }
-            else{
-                exists = false;
             }
         }
         System.out.println(exists);
