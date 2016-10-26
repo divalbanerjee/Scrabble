@@ -38,5 +38,8 @@ public class Hand {
         }
     }
 
+    public void clearHand(){
+        this.myHand = new Tile[8];
+    }
 
 }

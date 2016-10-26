@@ -48,6 +48,7 @@ public class ScrabbleGUI extends JFrame {
     JLabel lblCorrect = new JLabel("");
     JLabel lblScore = new JLabel("Score:");
     JLabel lblTitle = new JLabel("Scrabble");
+    JList lstTopTen = new JList();
 
     scabbleGame game = new scabbleGame();
 
@@ -61,6 +62,7 @@ public class ScrabbleGUI extends JFrame {
         title.setBackground(new Color(255,97,61));
         container.add(title);
 
+       // game.bestPlayers.myTopTenList.toString();
 
         lblTitle.setForeground(Color.white);
         lblCorrect.setForeground(Color.white);
@@ -145,6 +147,7 @@ public class ScrabbleGUI extends JFrame {
         bottomPanel.add(btnCheckWord);
         bottomPanel.add(lblScore);
         bottomPanel.add(lblCorrect);
+       /// bottomPanel.add(lstTopTen);
 
 
         btnOptionTile1.addMouseListener(new MouseLIstenerTile1());
@@ -182,6 +185,7 @@ public class ScrabbleGUI extends JFrame {
                 game.enteredHand.addTile(game.optionHand.getTile(1));
                 btnOptionTile1enabled = false;
                 btnOptionTile1.setVisibility(false);
+                game.optionHand.getTile(1).setVisibility(false);
                 if(game.enteredHand.length==1) {
                     btnTile1.setTile(game.enteredHand.getTile(1));
                 }
@@ -217,6 +221,7 @@ public class ScrabbleGUI extends JFrame {
                     temp.setMyPoints(game.getTilePoints(temp));
                     game.optionHand.setTile(temp,2);
                 }
+                game.optionHand.getTile(2).setVisibility(false);
                 game.enteredHand.addTile(game.optionHand.getTile(2));
                 btnOptionTile2enabled = false;
                 btnOptionTile2.setVisibility(false);
@@ -257,6 +262,7 @@ public class ScrabbleGUI extends JFrame {
                 }
                 game.enteredHand.addTile(game.optionHand.getTile(3));
                 btnOptionTile3enabled = false;
+                game.optionHand.getTile(3).setVisibility(false);
                 btnOptionTile3.setVisibility(false);
                 if(game.enteredHand.length==1) {
                     btnTile1.setTile(game.enteredHand.getTile(1));
@@ -295,6 +301,7 @@ public class ScrabbleGUI extends JFrame {
                 }
                 game.enteredHand.addTile(game.optionHand.getTile(4));
                 btnOptionTile4enabled = false;
+                game.optionHand.getTile(4).setVisibility(false);
                 btnOptionTile4.setVisibility(false);
                 if(game.enteredHand.length==1) {
                     btnTile1.setTile(game.enteredHand.getTile(1));
@@ -333,6 +340,7 @@ public class ScrabbleGUI extends JFrame {
                 }
                 game.enteredHand.addTile(game.optionHand.getTile(5));
                 btnOptionTile5enabled = false;
+                game.optionHand.getTile(5).setVisibility(false);
                 btnOptionTile5.setVisibility(false);
                 if(game.enteredHand.length==1) {
                     btnTile1.setTile(game.enteredHand.getTile(1));
@@ -371,6 +379,7 @@ public class ScrabbleGUI extends JFrame {
                 }
                 game.enteredHand.addTile(game.optionHand.getTile(6));
                 btnOptionTile6enabled = false;
+                game.optionHand.getTile(6).setVisibility(false);
                 btnOptionTile6.setVisibility(false);
                 if(game.enteredHand.length==1) {
                     btnTile1.setTile(game.enteredHand.getTile(1));
@@ -409,6 +418,7 @@ public class ScrabbleGUI extends JFrame {
                 }
                 game.enteredHand.addTile(game.optionHand.getTile(7));
                 btnOptionTile7enabled = false;
+                game.optionHand.getTile(7).setVisibility(false);
                 btnOptionTile7.setVisibility(false);
                 if(game.enteredHand.length==1) {
                     btnTile1.setTile(game.enteredHand.getTile(1));
@@ -434,18 +444,73 @@ public class ScrabbleGUI extends JFrame {
                 }
             }
         }
+
     }
 
     public class MouseListenerCheckButton extends MouseAdapter{
+        int score;
         public void mousePressed(MouseEvent e){
-            int score  = 0;
-            System.out.println("Click detected");
-                try {
-                    score = game.scoreWord();
-                    lblScore.setText("Score:"+ score);
-                } catch (IOException o) {
-                    lblScore.setText("Score:"+ score);
-                }
+            try {
+                score = game.scoreWord();
+            }catch(IOException o){
+
+            }
+            if(score > 0) {
+                game.player.myScore = score + game.player.myScore;
+                lblScore.setText("Score:" + game.player.getMyScore());
+                lblScore.setText("Score:" + game.player.getMyScore());
+                game.replaceTiles();
+                game.enteredHand.clearHand();
+
+                btnTile1.setTile(new Tile("-",0));
+                btnTile2.setTile(new Tile("-",0));
+                btnTile3.setTile(new Tile("-",0));
+                btnTile4.setTile(new Tile("-",0));
+                btnTile5.setTile(new Tile("-",0));
+                btnTile6.setTile(new Tile("-",0));
+                btnTile7.setTile(new Tile("-",0));
+
+
+                btnOptionTile1.setTile(game.optionHand.getTile(1));
+                btnOptionTile2.setTile(game.optionHand.getTile(2));
+                btnOptionTile3.setTile(game.optionHand.getTile(3));
+                btnOptionTile4.setTile(game.optionHand.getTile(4));
+                btnOptionTile5.setTile(game.optionHand.getTile(5));
+                btnOptionTile6.setTile(game.optionHand.getTile(6));
+                btnOptionTile7.setTile(game.optionHand.getTile(7));
+
+
+                btnOptionTile1enabled = true;
+                btnOptionTile2enabled = true;
+                btnOptionTile3enabled = true;
+                btnOptionTile4enabled = true;
+                btnOptionTile5enabled = true;
+                btnOptionTile6enabled = true;
+                btnOptionTile7enabled = true;
+
+
+
+                btnOptionTile1.setVisibility(true);
+                btnOptionTile2.setVisibility(true);
+                btnOptionTile3.setVisibility(true);
+                btnOptionTile4.setVisibility(true);
+                btnOptionTile5.setVisibility(true);
+                btnOptionTile6.setVisibility(true);
+                btnOptionTile7.setVisibility(true);
+
+                game.enteredHand.length = 0;
+                System.out.println(game.tilesUsed);
+            }
+
+            if(score ==0){ //lost the game
+                lblScore.setText("You lost");
+              //  JOptionPane.showConfirmDialog(,game.player.getMyScore());
+            }
+
+
+
+
+
         }
     }
 

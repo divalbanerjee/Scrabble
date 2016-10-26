@@ -15,6 +15,7 @@ public class scabbleGame {
     Hand optionHand = new Hand();
     Hand enteredHand =  new Hand();
     Player player = new Player("",0);
+    TopTen bestPlayers = new TopTen();
 
     public scabbleGame(){
         try {
@@ -34,6 +35,17 @@ public class scabbleGame {
         optionHand.addTile(tileBag.myBagOfTiles[6]);
         optionHand.addTile(tileBag.myBagOfTiles[7]);
 
+        tilesUsed = 7;
+
+        /*
+        try{
+            bestPlayers.openTopTen();
+        }catch (IOException e){
+            System.out.println("Failed");
+        }
+
+        bestPlayers.sort();
+        */
     }
 
 
@@ -50,16 +62,14 @@ public class scabbleGame {
 
             strLine = reader.next();
                 wordPos++;
-                //	System.out.println(bagPos);
                 myWords[wordPos] = new String(strLine);
 
         }
         reader.close();
 
-        System.out.println("succcess");
+
 
         totalWords = wordPos;
-        System.out.println(totalWords);
     }
 
     public void openTilePoints() throws IOException{
@@ -89,7 +99,7 @@ public class scabbleGame {
     public int getTilePoints(Tile tile){
         int pointValue = 0;
         for(int I = 0; I<=26; I++){
-            if(tile.myLetter.equals(tileValues[I].getMyLetter())){
+            if(tile.myLetter.equals(tileValues[I].getMyLetter())){  //FIXME:Nullpointer exception
                 pointValue = tileValues[I].getMyPoints();
             }
         }
@@ -100,13 +110,14 @@ public class scabbleGame {
 
     }
 
-    public void replaceTile(){
-
+    public void replaceTiles(){
+        for(int i = 1; i <= 7 ;i++){
+            if(optionHand.getTile(i).visibility == false){
+                tilesUsed++;
+                optionHand.setTile(tileBag.myBagOfTiles[tilesUsed],i);
+            }
+        }
     }
-
-
-
-
 
     public void enterOptionTile(Tile tile){
         enteredHand.addTile(tile);
@@ -121,11 +132,8 @@ public class scabbleGame {
             for (i = 1; i <= enteredHand.getWord().length(); i++) {
                 System.out.println(i);
                 score = score + enteredHand.getTile(i).getMyPoints();
-                System.out.println("score"+score);
             }
         }
-        System.out.println(enteredHand.getTile(1).toString());
-        System.out.print(score);
         return score;
     }
 
@@ -139,15 +147,12 @@ public class scabbleGame {
     public boolean checkWord(String word) {
         Boolean exists = false;
         String enteredWord = enteredHand.getWord();
-        System.out.println(enteredWord);
-        System.out.println(enteredWord.length());
         for (int i = 0; i < totalWords; i++ ){
             if(enteredWord.equals(this.myWords[i])) {
                 exists = true;
                 break;
             }
         }
-        System.out.println(exists);
         return exists;
     }
 

@@ -41,7 +41,7 @@ public class tileButton extends JPanel{
 
             g.setColor(new Color(255, 195, 0));
             //g.drawString(myButtonText,(int)(getWidth()/2-myButtonText.length()*myFont.getSize()/2), (int)(getHeight()/2*myFont.getSize()/2));
-            g.drawString(this.myTile.getMyLetter(), 8 + this.myTileSize / 2, 35 + this.myTileSize / 2);
+                g.drawString(this.myTile.getMyLetter(), 8 + this.myTileSize / 2, 35 + this.myTileSize / 2);
 
             g.setFont(new Font("Helvetica", Font.PLAIN, 20));
             g.drawString(this.myTile.getMyPoints() + "", this.myTileSize - 5, 45);

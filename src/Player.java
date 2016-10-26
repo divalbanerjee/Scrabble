@@ -8,7 +8,6 @@ public class Player {
         super();
         this.myName = myName;
         this.myScore = myScore;
-
     }
 
     public String getMyName() {
