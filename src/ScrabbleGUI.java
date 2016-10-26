@@ -503,7 +503,21 @@ public class ScrabbleGUI extends JFrame {
             }
 
             if(score ==0){ //lost the game
+
                 lblScore.setText("You lost");
+                System.out.println("Top Ten");
+                System.out.println("Dival - 136");
+                System.out.println("Dival - 128");
+                System.out.println("Dival - 127");
+                System.out.println("Dival - 121");
+                System.out.println("Dival - 119");
+                System.out.println("Dival - 107");
+                System.out.println("Dival - 104");
+                System.out.println("Dival - 95");
+                System.out.println("Dival - 93");
+                System.out.println("Dival - 92");
+
+
               //  JOptionPane.showConfirmDialog(,game.player.getMyScore());
             }
 
